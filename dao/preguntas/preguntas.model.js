@@ -1,4 +1,4 @@
-const getDb = require("../mongodb");
+const ObjectId = require("mongodb").ObjectId;
 const getDb = require("../mongodb");
 
 let db = null;
@@ -17,15 +17,15 @@ class Preguntas {
         console.error(err);
       });
   }
-
+  getCurrentDateTime()
   async new(
     pregunta,
     respuesta,
     categoria,
     dificultad,
     autor,
-    fechaCreacion,
-    fechaModificacion
+    fechaCreacion = dateTime,
+    fechaModificacion = dateTime
   ) {
     const newPregunta = {
       pregunta,
@@ -40,9 +40,27 @@ class Preguntas {
     return rslt;
   }
 
-  async  getAll(){
+  async getAll() {
     const cursor = this.collection.find({});
     const documents = await cursor.toArray();
     return documents;
   }
+
+  async getById(id) {
+    const _id = new ObjectId(id);
+    const filter = { _id };
+    console.log(filter);
+    const myDocument = await this.collection.findOne(filter);
+    return myDocument;
+  }
+}
+
+function getCurrentDateTime() {
+  let today = new Date();
+  let date =
+    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+  let time =
+    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  let dateTime = date + " " + time;
+  return dateTime;
 }
