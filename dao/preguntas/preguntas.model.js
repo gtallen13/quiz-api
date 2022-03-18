@@ -17,15 +17,15 @@ class Preguntas {
         console.error(err);
       });
   }
-  getCurrentDateTime()
+
   async new(
     pregunta,
     respuesta,
     categoria,
     dificultad,
     autor,
-    fechaCreacion = dateTime,
-    fechaModificacion = dateTime
+    fechaCreacion,
+    fechaModificacion
   ) {
     const newPregunta = {
       pregunta,
@@ -55,12 +55,4 @@ class Preguntas {
   }
 }
 
-function getCurrentDateTime() {
-  let today = new Date();
-  let date =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-  let time =
-    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  let dateTime = date + " " + time;
-  return dateTime;
-}
+
