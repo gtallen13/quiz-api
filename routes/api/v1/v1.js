@@ -16,5 +16,5 @@ router.use(
   jwtMiddleware,
   preguntasRoutes
 );
-// router.use('/expedientes', expedientesRoutes);
+
 module.exports = router;

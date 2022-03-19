@@ -23,6 +23,7 @@ class Preguntas {
     respuesta,
     categoria,
     dificultad,
+    revision,
     autor,
     fechaCreacion,
     fechaModificacion
@@ -32,6 +33,7 @@ class Preguntas {
       respuesta,
       categoria,
       dificultad,
+      revision,
       autor,
       fechaCreacion,
       fechaModificacion,
