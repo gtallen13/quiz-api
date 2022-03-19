@@ -6,9 +6,9 @@ const usuariosModel = new Usuarios();
 
 router.post('/signin', async (req, res)=>{
   try {
-    const {email, password} = req.body;
+    const {nombre, email, password, preguntas_Seguridad, penalizacion} = req.body;
     // TODO: realizar validaciones de entrada de datos
-    let rslt = await usuariosModel.new(email, password);
+    let rslt = await usuariosModel.new(nombre, email, password, preguntas_Seguridad, penalizacion);
     // joi ()
     res.status(200).json({status: 'success', result: rslt});
   } catch (ex) {
@@ -16,6 +16,7 @@ router.post('/signin', async (req, res)=>{
     res.status(500).json({ status: 'failed' });
   }
 });
+
 
 router.post('/login', async (req, res)=>{
   try {

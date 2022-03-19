@@ -24,11 +24,14 @@ class Usuarios {
       })
       .catch((err) => { console.error(err) });
   }
-  async new(email, password, roles = []) {
+  async new(nombre, email, password, pregunta_Seguridad, roles = [], penalizacion) {
     const newUsuario = {
+      nombre,
       email,
       password: await this.hashPassword(password),
+      pregunta_Seguridad,
       roles:[...roles, 'public'],
+      penalizacion,
     };
     const rslt = await this.collection.insertOne(newUsuario);
     return rslt;
@@ -62,6 +65,12 @@ class Usuarios {
     const filter = {email};
     return await this.collection.findOne(filter);
   }
+
+  async getByName(nombre) {
+    const filter = {nombre};
+    return await this.collection.findOne(filter);
+  }
+
   async hashPassword(rawPassword){
     return await bcrypt.hash(rawPassword, 10);
   }
