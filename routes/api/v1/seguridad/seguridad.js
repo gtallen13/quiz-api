@@ -5,7 +5,7 @@ const Usuarios = require('../../../../dao/usuarios/usuarios.model');
 const usuariosModel = new Usuarios();
 
 router.post('/signin', async (req, res)=>{
-  /*try {
+  try {
     const {email, password} = req.body;
     // TODO: realizar validaciones de entrada de datos
     let rslt = await usuariosModel.new(email, password);
@@ -14,13 +14,11 @@ router.post('/signin', async (req, res)=>{
   } catch (ex) {
     console.log(ex);
     res.status(500).json({ status: 'failed' });
-  }*/
-  res.status(502).json({msg: 'No implemented' }):
-
+  }
 });
 
 router.post('/login', async (req, res)=>{
- /* try {
+  try {
     const { email, password } = req.body;
     const userInDb = await usuariosModel.getByEmail(email);
     if (userInDb) {
@@ -41,8 +39,7 @@ router.post('/login', async (req, res)=>{
   } catch (ex) {
     console.log(ex);
     res.status(500).json({ status: 'failed' });
-  }*/
-  res.status(502).json({msg: 'No implemented' }):
+  }
 });
 
 
