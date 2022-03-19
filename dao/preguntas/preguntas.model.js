@@ -55,4 +55,4 @@ class Preguntas {
   }
 }
 
-
+module.exports = Preguntas;

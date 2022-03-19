@@ -6,7 +6,7 @@ const { verifyApiHeaderToken } =
 const {passport, jwtMiddleware} = require('./seguridad/jwtHelper');
 
 const preguntasRoutes = require('./preguntas/preguntas');
-// const seguridadRoutes = require('./seguridad/seguridad');
+const seguridadRoutes = require('./seguridad/seguridad');
 // const expedientesRoutes = require('./expedientes/expedientes');
 router.use(passport.initialize());
 //public
