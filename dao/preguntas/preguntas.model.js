@@ -55,6 +55,25 @@ class Preguntas {
     const myDocument = await this.collection.findOne(filter);
     return myDocument;
   }
+  async updateOne(
+    id,
+    pregunta,
+    respuesta,
+    categoria,
+    dificultad,
+    fechaModificacion){
+    const filter = {_id:new ObjectId(id)};
+    const updateCmd = {
+      "$set":{
+        pregunta,
+        respuesta,
+        categoria,
+        dificultad,
+        fechaModificacion,
+      }
+    }
+    return await this.collection.updateOne(filter, updateCmd)
+  }
 }
 
 module.exports = Preguntas;
