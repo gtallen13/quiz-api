@@ -15,6 +15,7 @@ router.get("/all", async (req, res) => {
   }
 });
 
+
 router.post("/new", async (req, res) => {
   let today = new Date();
   let date =
@@ -67,5 +68,16 @@ router.get("/byid/:id", async (req, res) => {
     res.status(500).json({ status: "failed" });
   }
 });
+
+router.get("/getCategories/:categoria/:dificultad", async (req, res) =>{
+  try{
+    const { categoria, dificultad } = req.params;
+    const rows = await preguntasModel.getCategories(categoria, dificultad);
+    res.status(200).json({status: "success", preguntas: rows});
+  } catch (ex) {
+    console.log(ex);
+    res.status(500).json({ status: "failed" });
+  }
+})
 
 module.exports = router;
