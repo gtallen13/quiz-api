@@ -17,6 +17,16 @@ router.post('/signin', async (req, res)=>{
   }
 });
 
+router.put('/updatePenalizacion/:id', async(req, res)=>{
+  try{
+    const {id}= req.body
+    let rslt = await usuariosModel.updatePenalizaciones(id);
+    res.status(200).json({status: "ok", result: rslt})
+    }catch(e){
+      console.log(e);
+      res.status(500).json({status:"failed"});
+    }
+})
 
 router.post('/login', async (req, res)=>{
   try {
