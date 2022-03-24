@@ -68,7 +68,7 @@ router.get("/byid/:id", async (req, res) => {
   }
 });
 
-router.get("/byAmount", async (req, res) => {
+router.get("/byAmount/ :cantidad", async (req, res) => {
   const {cantidad} = req.params;
   const intCantidad = parseInt(cantidad)
   try{
