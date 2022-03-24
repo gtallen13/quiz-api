@@ -31,7 +31,7 @@ class Usuarios {
       password: await this.hashPassword(password),
       pregunta_Seguridad,
       roles:[...roles, 'public'],
-      penalizacion,
+      penalizacion:0,
     };
     const rslt = await this.collection.insertOne(newUsuario);
     return rslt;
@@ -77,6 +77,24 @@ class Usuarios {
   async comparePassword (rawPassword, dbPassword) {
     return await bcrypt.compare(rawPassword, dbPassword);
   }
+
+  async updatePenalizaciones(id){
+    
+    const myDocument = this.collection.updateOne({
+      _id: new ObjectId(id)
+    },
+      {$inc :{
+        penalizacion:1
+        
+      }}) 
+      
+      return myDocument;
+    }
+  
+    
 }
+
+//update penalizaciones
+
 
 module.exports = Usuarios;
