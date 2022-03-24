@@ -74,6 +74,14 @@ class Preguntas {
     }
     return await this.collection.updateOne(filter, updateCmd)
   }
+  async getCategories(categoria, dificultad ){
+    if (categoria !==  "" && dificultad !== ""){
+      const  filter = this.collection.find({categoria: categoria, dificultad: dificultad});
+    const documents = await filter.toArray();
+    return documents;
+    }
+    return false;
+  }
 }
 
 module.exports = Preguntas;

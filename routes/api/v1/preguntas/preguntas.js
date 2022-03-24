@@ -24,6 +24,7 @@ router.get("/all", async (req, res) => {
   }
 });
 
+
 router.post("/new", async (req, res) => {
   
   const {
@@ -91,6 +92,17 @@ router.put("/update/:id", async(req, res)=>{
   } catch(e){
     console.log(e);
     res.status(500).json({status:"failed"});
+  }
+})
+
+router.get("/getCategories/:categoria/:dificultad", async (req, res) =>{
+  try{
+    const { categoria, dificultad } = req.params;
+    const rows = await preguntasModel.getCategories(categoria, dificultad);
+    res.status(200).json({status: "success", preguntas: rows});
+  } catch (ex) {
+    console.log(ex);
+    res.status(500).json({ status: "failed" });
   }
 })
 
