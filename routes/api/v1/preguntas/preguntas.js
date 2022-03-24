@@ -32,7 +32,6 @@ router.post("/new", async (req, res) => {
     respuesta,
     categoria,
     dificultad,
-    revision,
     autor,
     fechaCreacion = getCurrentDateTime(),
     fechaModificacion,
@@ -43,7 +42,6 @@ router.post("/new", async (req, res) => {
       respuesta,
       categoria,
       dificultad,
-      revision,
       autor,
       fechaCreacion,
       fechaModificacion
@@ -118,5 +116,23 @@ router.get("/byAmount/:cantidad", async (req, res) => {
       res.status(500).json({status:"failed"})
     }
 });
+
+router.put('/revision/:id', async (req, res) => {
+  try{
+    const {revision} = req.body;
+    const {id} = req.params;
+    const result = await preguntasModel.revisionUpdate(id, revision);
+    res.status(200).json({
+      status: 'ok',
+      result
+    })
+  }catch (ex){
+    console.log(ex);
+    res.status(500).json({
+      status: "failed",
+      result: {},
+    });
+  }
+})
 
 module.exports = router;

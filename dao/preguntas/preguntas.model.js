@@ -23,7 +23,6 @@ class Preguntas {
     respuesta,
     categoria,
     dificultad,
-    revision,
     autor,
     fechaCreacion,
     fechaModificacion
@@ -33,7 +32,7 @@ class Preguntas {
       respuesta,
       categoria,
       dificultad,
-      revision,
+      revision:false,
       autor,
       fechaCreacion,
       fechaModificacion,
@@ -85,8 +84,16 @@ class Preguntas {
   async getAmount(cantidad){
     const cursor =  this.collection.find({}).limit(cantidad)
     const documents = await cursor.toArray()
-    return documents;
-    
+    return documents; 
+  }
+  async revisionUpdate(id, revision){
+    const filter = {_id: new ObjectId(id)};
+    const updateCmd = {
+      '$set':{
+        revision
+      }
+    };
+    return await this.collection.updateOne(filter, updateCmd);
   }
 }
 
