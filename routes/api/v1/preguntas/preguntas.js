@@ -68,4 +68,22 @@ router.get("/byid/:id", async (req, res) => {
   }
 });
 
+router.put('/revision/:id', async (req, res) => {
+  try{
+    const {revision} = req.body;
+    const {id} = req.params;
+    const result = await preguntasModel.revisionUpdate(id, revision);
+    res.status(200).json({
+      status: 'ok',
+      result
+    })
+  }catch (ex){
+    console.log(ex);
+    res.status(500).json({
+      status: "failed",
+      result: {},
+    });
+  }
+})
+
 module.exports = router;

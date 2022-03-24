@@ -55,6 +55,16 @@ class Preguntas {
     const myDocument = await this.collection.findOne(filter);
     return myDocument;
   }
+
+  async revisionUpdate(id, revision){
+    const filter = {_id: new ObjectId(id)};
+    const updateCmd = {
+      '$set':{
+        revision
+      }
+    };
+    return await this.collection.revisionUpdate(filter, updateCmd);
+  }
 }
 
 module.exports = Preguntas;
