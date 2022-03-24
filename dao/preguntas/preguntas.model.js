@@ -55,6 +55,14 @@ class Preguntas {
     const myDocument = await this.collection.findOne(filter);
     return myDocument;
   }
+  
+  async getAmount(cantidad){
+    
+    const cursor =  this.collection.find().limit(cantidad)
+    const documents = await cursor.toArray()
+    return documents;
+    
+  }
 }
 
 module.exports = Preguntas;
