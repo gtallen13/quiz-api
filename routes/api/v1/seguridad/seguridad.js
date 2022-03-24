@@ -17,7 +17,7 @@ router.post('/signin', async (req, res)=>{
   }
 });
 
-router.put('/updatePenalizacion/:id', async(req, res)=>{
+router.put('/updatePenalizacion/', async(req, res)=>{
   try{
     const {id}= req.body
     let rslt = await usuariosModel.updatePenalizaciones(id);
