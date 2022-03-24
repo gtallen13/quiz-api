@@ -106,4 +106,16 @@ router.get("/getCategories/:categoria/:dificultad", async (req, res) =>{
   }
 })
 
+router.get("/byAmount", async (req, res) => {
+  const {cantidad} = req.params;
+  const intCantidad = parseInt(cantidad)
+  try{
+      const rows = await preguntasModel.getAmount(intCantidad);
+      res.status(200).json({status: "ok", result: rows})
+    }catch(error){
+      console.log(error)
+      res.status(500).json({status:"failed"})
+    }
+});
+
 module.exports = router;
