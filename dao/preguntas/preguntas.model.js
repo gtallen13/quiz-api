@@ -83,8 +83,7 @@ class Preguntas {
     return false;
   }
   async getAmount(cantidad){
-    
-    const cursor =  this.collection.find().limit(cantidad)
+    const cursor =  this.collection.find({}).limit(cantidad)
     const documents = await cursor.toArray()
     return documents;
     

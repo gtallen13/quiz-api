@@ -106,8 +106,9 @@ router.get("/getCategories/:categoria/:dificultad", async (req, res) =>{
   }
 })
 
-router.get("/byAmount", async (req, res) => {
+router.get("/byAmount/:cantidad", async (req, res) => {
   const {cantidad} = req.params;
+  console.log(cantidad);
   const intCantidad = parseInt(cantidad)
   try{
       const rows = await preguntasModel.getAmount(intCantidad);
