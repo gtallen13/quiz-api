@@ -28,7 +28,7 @@ const SigninPage = ()=>{
       const data = await publicAxios.post(
         '/api/v1/seguridad/signin',
         {
-          username: txtUsername,
+          nombre: txtUsername,
           email: txtCorreo,
           password: txtPassword
         }
