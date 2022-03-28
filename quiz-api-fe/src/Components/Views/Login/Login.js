@@ -1,7 +1,8 @@
-import Page from "../UX/Page/Page";
-import Input from "../UX/Forms/Input";
-import { PrimaryButton, SecondaryButton } from "../UX/Forms/Button";
-const SignIn = ({
+import Page from "../../UX/Page/Page";
+import Input from "../../UX/Forms/Input";
+import { PrimaryButton, SecondaryButton } from "../../UX/Forms/Button";
+import Nav from "../../UX/Nav/Nav";
+const Login = ({
   txtCorreoValue,
   txtPasswordValue,
   onChange: onChangeHandler,
@@ -9,9 +10,9 @@ const SignIn = ({
   errorPassword,
   onConfirmClick,
   onCancelClick
-})=> {
+}) => {
   return (
-    <Page header={(<h2>&nbsp;Crear Cuenta</h2>)}>
+    <Page header={(<h2>&nbsp;Iniciar Sesión</h2>)} footer={<Nav/>}>
       <section>
         <Input
           label="Correo Electrónico"
@@ -30,17 +31,18 @@ const SignIn = ({
           value={txtPasswordValue}
           info="Mínimo 8 caractéres, una Mayuscula, una minuscula, un numero y un simbolo"
           error={errorPassword}
+          hasError={!!(errorPassword && true)}
           onChange={onChangeHandler}
         />
         <PrimaryButton onClick={onConfirmClick}>
-          Crear Cuenta
+          Iniciar Sesión
         </PrimaryButton>
         <SecondaryButton onClick={onCancelClick}>
-          Tengo Cuenta
+          Crear Cuenta
         </SecondaryButton>
       </section>
     </Page>
   );
 }
 
-export default SignIn;
+export default Login;
