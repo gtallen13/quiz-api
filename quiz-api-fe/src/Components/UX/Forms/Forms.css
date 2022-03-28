@@ -1,57 +1,110 @@
-.form_field{
+.form-wrapper {
   display: flex;
   flex-direction: column;
-  padding:0.5rem;
+  align-items: center;
+  width: 40%;
+  padding: 50px;
+  background: rgb(0, 30, 108);
+  color: whitesmoke;
+  background: linear-gradient(
+    0deg,
+    var(--dark-blue) 0%,
+    var(--blue) 50%,
+    var(--light-blue) 100%
+  );
+  border-radius: 10px;
+  box-shadow: 0 0 10px #0e0e0e;
 }
-.form_field label{
+.form-wrapper a {
+  color: whitesmoke;
+  padding: 10px;
   font-weight: 600;
-  margin-bottom: 0.25rem;
+  transition: all 0.5s;
 }
-.form_field input{
-  padding:0.5rem;
-  font-size:1rem;
-  border-width: thin;
-  border-radius: 0.25rem;
+.form-wrapper a:hover {
+  color: var(--orange);
 }
-.form_field input:focus{
-  outline-color: darkgreen;
-  outline-width: thin;
-}
-.form_field .field_info{
-  padding:0.5rem 0.25rem;
-  padding-right: 0;
-  font-size:0.8rem;
-}
-.form_field .field_error{
-  padding:0.5rem 0.25rem;
-  padding-right: 0;
-  font-size:0.8rem;
-  color: darkred;
+.form_field {
+  display: flex;
+  padding: 0.5rem;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
+.info-error-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.form_field label {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 0.25rem;
+  width: 30%;
+}
+.form_field input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-width: thin;
+  border-radius: 0.25rem;
+  transition: all 0.5s;
+  border: none;
+}
+.form_field input:focus {
+  outline-color: var(--orange);
+  outline-width: thin;
+}
+.info-error-container .field_info {
+  padding: 0.5rem 0.25rem;
+  padding-right: 0;
+  font-size: 0.8rem;
+}
+.info-error-container .field_error {
+  padding: 0.5rem 0.25rem;
+  padding-right: 0;
+  font-size: 0.8rem;
+  color: darkred;
+}
+.button-container {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
 button {
-  margin:0.5rem;
-  padding:0.5rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
   background-color: #000;
-  color:#fff;
+  color: #fff;
   font-weight: 600;
   border-width: thin;
   border-style: solid;
   border-color: #000;
-  border-radius:0.25rem;
-  font-size:1rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  border: none;
   cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.5s;
+}
+button:hover {
+  opacity: 1;
 }
 
-button.button_primary{
-  padding:0.75rem;
-  background-color: darkgreen;
+button.button_primary {
+  padding: 0.75rem;
+  background-color: var(--orange);
 }
 
-button.button_secondary{
-  padding:0.75rem;
+button.button_secondary {
+  padding: 0.75rem;
   background-color: darkorange;
-  color:#000;
+  color: #000;
 }
 
 button.pill {

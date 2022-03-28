@@ -17,16 +17,19 @@ const Input = (
 ) => {
 
   return (
-    <section className={(['form_field', ...customClassName]).join(' ')}>
-      <label>{label}</label>
-      <input
-        type={type}
-        name={name}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChangeHandler}
-        {...rest}
-      />
+    <>
+      <section className={(['form_field', ...customClassName]).join(' ')}>
+        <label>{label}</label>
+        <input
+          type={type}
+          name={name}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChangeHandler}
+          {...rest}
+        />
+      </section>
+      <div className='info-error-container'>
       {
         info &&
         <span className="field_info">{info}</span>
@@ -35,7 +38,8 @@ const Input = (
         hasError &&
         <span className="field_error">{error}</span>
       }
-    </section>
+    </div>
+    </>
   );
 }
 

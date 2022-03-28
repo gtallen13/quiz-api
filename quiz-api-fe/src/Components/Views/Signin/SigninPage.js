@@ -5,6 +5,7 @@ import { publicAxios } from '../../../Lib/apiClient';
 const SigninPage = ()=>{
   const [txtCorreo, setTxtCorreo] = useState('');
   const [txtPassword, setTxtPassword] = useState('');
+  const [txtUsername, setTxtUsername] = useState('');
   const onChangeHandler = ({target: {name, value}})=>{
     switch (name) {
       case 'txtCorreo':
@@ -12,6 +13,11 @@ const SigninPage = ()=>{
         break;
       case 'txtPassword':
         setTxtPassword(value);
+        break;
+      case 'txtUsername':
+        setTxtUsername(value);
+        break;
+      default:
         break;
     }
   }
@@ -22,6 +28,7 @@ const SigninPage = ()=>{
       const data = await publicAxios.post(
         '/api/v1/seguridad/signin',
         {
+          username: txtUsername,
           email: txtCorreo,
           password: txtPassword
         }
@@ -44,6 +51,7 @@ const SigninPage = ()=>{
       <Signin
         txtCorreoValue={txtCorreo}
         txtPasswordValue={txtPassword}
+        txtUsernameValue={txtUsername}
         onChange={onChangeHandler}
         errorTxtCorreo=''
         errorPassword=''
