@@ -23,7 +23,6 @@ class Preguntas {
     respuesta,
     categoria,
     dificultad,
-    revision,
     autor,
     fechaCreacion,
     fechaModificacion
@@ -33,7 +32,7 @@ class Preguntas {
       respuesta,
       categoria,
       dificultad,
-      revision,
+      revision:false,
       autor,
       fechaCreacion,
       fechaModificacion,
@@ -55,13 +54,46 @@ class Preguntas {
     const myDocument = await this.collection.findOne(filter);
     return myDocument;
   }
-  
-  async getAmount(cantidad){
-    
-    const cursor =  this.collection.find().limit(cantidad)
-    const documents = await cursor.toArray()
+  async updateOne(
+    id,
+    pregunta,
+    respuesta,
+    categoria,
+    dificultad,
+    fechaModificacion){
+    const filter = {_id:new ObjectId(id)};
+    const updateCmd = {
+      "$set":{
+        pregunta,
+        respuesta,
+        categoria,
+        dificultad,
+        fechaModificacion,
+      }
+    }
+    return await this.collection.updateOne(filter, updateCmd)
+  }
+  async getCategories(categoria, dificultad ){
+    if (categoria !==  "" && dificultad !== ""){
+      const  filter = this.collection.find({categoria: categoria, dificultad: dificultad});
+    const documents = await filter.toArray();
     return documents;
-    
+    }
+    return false;
+  }
+  async getAmount(cantidad){
+    const cursor =  this.collection.find({}).limit(cantidad)
+    const documents = await cursor.toArray()
+    return documents; 
+  }
+  async revisionUpdate(id, revision){
+    const filter = {_id: new ObjectId(id)};
+    const updateCmd = {
+      '$set':{
+        revision
+      }
+    };
+    return await this.collection.updateOne(filter, updateCmd);
   }
 }
 
