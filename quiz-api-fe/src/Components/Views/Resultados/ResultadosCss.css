@@ -1,0 +1,28 @@
+body{
+ background-color: blue;
+ background: linear-gradient(
+    0deg,
+    var(--dark-blue) 0%,
+    var(--blue) 50%,
+    var(--light-blue) 100%);
+    
+}
+.divClass{
+    border: solid 1px black;
+    margin: 2%;
+    padding: 1%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.checkBox{
+    position: absolute!important;
+    top: 30%!important;
+    right: 0!important;
+}
+
+.checkBox label{
+    padding: 5px;
+}
