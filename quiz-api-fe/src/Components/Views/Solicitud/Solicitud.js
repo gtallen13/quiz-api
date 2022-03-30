@@ -20,6 +20,7 @@ const Solicitud = ({
                     <Input
                         label="Cantidad"
                         type="number"
+                        min="0"
                         name="txtCantidad"
                         value={txtCantidadValue}
                         error={errorTxtCantidad}
