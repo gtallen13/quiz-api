@@ -24,7 +24,7 @@ const ComboBox = ({
         {...rest}
       >
         {comboBoxOptions.map((item, key) => (
-          <option value={item}> {item} </option>
+          <option value={item} key={key}> {item} </option>
         ))}
       </select>
       {info && <span className="field_info">{info}</span>}

@@ -40,12 +40,12 @@ const Login = ({
             hasError={!!(errorPassword && true)}
             onChange={onChangeHandler}
           />
-          <div className="button-container">
+          <div className="button-container column">
             <PrimaryButton onClick={onConfirmClick}>
               Iniciar Sesión
             </PrimaryButton>
             <p>No tiene cuenta ? 
-              <a href="/Signin"> Crear cuenta </a>
+              <a href="/Signin">Crear cuenta</a>
             </p>
           </div>
         </section>

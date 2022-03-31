@@ -4,16 +4,18 @@ import { publicAxios } from '../../../Lib/apiClient';
 
 const AgregarPage = ()=>{
   const [txtPregunta, setTxtPregunta] = useState('');
-  const [cmbRespuesta, setcmbRespuesta] = useState('');
-  const [cmbCategoria, setcmbCategoria] = useState('');
-  const [cmbDificultad, setcmbDificultad] = useState('');
+  const [cmbRespuesta, setcmbRespuesta] = useState(true);
+  const [cmbCategoria, setcmbCategoria] = useState("Deportes");
+  const [cmbDificultad, setcmbDificultad] = useState("Facil");
   const onChangeHandler = ({target: {name, value}})=>{
     switch (name) {
       case 'txtPregunta':
+        console.log(value);
         setTxtPregunta(value);
         break;
       case 'cmbRespuesta':
-        setcmbRespuesta(value);
+        if (value==="Verdadero") setcmbRespuesta(true);
+        if (value==="Falso") setcmbRespuesta(false);
         break;
       case 'cmbCategoria':
         setcmbCategoria(value);
@@ -33,9 +35,9 @@ const AgregarPage = ()=>{
         '/api/v1/preguntas/new',
         {
           pregunta: txtPregunta,
-          respuesta: false,
-          categoria: "Deportes",
-          dificultad: "Facil",
+          respuesta: cmbRespuesta,
+          categoria: cmbCategoria,
+          dificultad: cmbDificultad,
           autor: "xd",
           
         }, {headers: {Authorization:'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5yX2xvcGV6ckB1bmljYWguZWR1Iiwicm9sZXMiOlsicHVibGljIl0sIl9pZCI6IjYyNDRkOWY2ZGRmOGU0YzUwNjMzNjNmOSIsImlhdCI6MTY0ODY4MDQxMX0.iRD3BUzm_datD6qsOUQMVaTY_JK4f0YtmRCVGsGc9Ys'}}
@@ -58,6 +60,9 @@ const AgregarPage = ()=>{
     <>
       <Agregar
         txtPreguntaValue={txtPregunta}
+        cmbRespuestaValue={cmbRespuesta}
+        cmbCategoriaValue={cmbCategoria}
+        cmbDificultadValue={cmbDificultad}
         onChange={onChangeHandler}
         errorTxtPregunta=''
         onConfirmClick={onConfirm}
