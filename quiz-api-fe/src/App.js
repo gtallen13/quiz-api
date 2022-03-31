@@ -9,6 +9,7 @@ import Login from './Components/Views/Login/LoginPage';
 import Todo from './Components/Views/Todo/TodoPage';
 import ResultadosPage from './Components/Views/Resultados/ResultadosPage';
 import Contribuciones from './Components/Views/Contribuciones/ContribucionesPage';
+import Agregar from './Components/Views/AgregarPreguntas/AgregarPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/todo" element={<Todo />} />
         <Route path="/Resultados" element={<ResultadosPage />} />
         <Route path="/contribuciones" element={<Contribuciones />} />
+        <Route path='/agregar' element={< Agregar />} />
       </Routes>
     </BrowserRouter>
     </Provider>
