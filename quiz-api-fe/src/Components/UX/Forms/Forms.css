@@ -80,6 +80,16 @@ border-radius: 0.25rem;
   border: none;
   width: 53%;
 }
+
+.form_field select{
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-width: thin;
+  border-radius: 0.25rem;
+  transition: all 0.5s;
+  border: none;
+  width: 40%;
+}
 .form_field input:focus {
   outline-color: var(--orange);
   outline-width: thin;
@@ -99,7 +109,6 @@ border-radius: 0.25rem;
   margin-top: 20px;
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
   width: 100%;
 }
@@ -130,8 +139,8 @@ button.button_primary {
 
 button.button_secondary {
   padding: 0.75rem;
-  background-color: darkorange;
-  color: #000;
+  background-color: #035397;
+  color: #fff;
 }
 
 button.pill {

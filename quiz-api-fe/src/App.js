@@ -10,6 +10,7 @@ import Todo from './Components/Views/Todo/TodoPage';
 import ResultadosPage from './Components/Views/Resultados/ResultadosPage';
 import Contribuciones from './Components/Views/Contribuciones/ContribucionesPage';
 import Agregar from './Components/Views/AgregarPreguntas/AgregarPage';
+import Editar from './Components/Views/Editar/EditarPage';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/Resultados" element={<ResultadosPage />} />
         <Route path="/contribuciones" element={<Contribuciones />} />
         <Route path='/agregar' element={< Agregar />} />
+        <Route path="/editar" element={<Editar/>}/>
       </Routes>
     </BrowserRouter>
     </Provider>
