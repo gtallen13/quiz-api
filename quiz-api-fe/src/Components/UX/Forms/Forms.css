@@ -1,6 +1,5 @@
 .form-wrapper {
   display: flex;
-<<<<<<< HEAD
   flex-direction: column;
   align-items: center;
   width: 40%;
@@ -19,7 +18,6 @@
 .form-wrapper a {
   color: whitesmoke;
   padding: 10px;
-=======
   padding:0.5rem;
   align-items: center;
   justify-content: space-evenly;
@@ -33,7 +31,6 @@ border-radius: 0.25rem;
 }
 
 .form_field label{
->>>>>>> 7fb66d9657b4863cfc76fb8dee891148a9f09263
   font-weight: 600;
   transition: all 0.5s;
 }
@@ -112,6 +109,7 @@ border-radius: 0.25rem;
   justify-content: center;
   width: 100%;
 }
+
 button {
   margin: 0.5rem;
   padding: 0.5rem;
@@ -139,7 +137,7 @@ button.button_primary {
 
 button.button_secondary {
   padding: 0.75rem;
-  background-color: #035397;
+  background-color: var(--blue);
   color: #fff;
 }
 

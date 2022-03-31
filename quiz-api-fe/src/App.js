@@ -11,6 +11,7 @@ import ResultadosPage from './Components/Views/Resultados/ResultadosPage';
 import Contribuciones from './Components/Views/Contribuciones/ContribucionesPage';
 import Agregar from './Components/Views/AgregarPreguntas/AgregarPage';
 import Editar from './Components/Views/Editar/EditarPage';
+import Revision from './Components/Views/Revision/RevisionPage';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/contribuciones" element={<Contribuciones />} />
         <Route path='/agregar' element={< Agregar />} />
         <Route path="/editar" element={<Editar/>}/>
+        <Route path="/revision" element={<Revision/>}/>
       </Routes>
     </BrowserRouter>
     </Provider>
