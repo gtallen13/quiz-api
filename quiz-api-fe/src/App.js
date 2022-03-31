@@ -7,6 +7,7 @@ import Splash from './Components/Views/Splash';
 import Signin from './Components/Views/Signin/SigninPage';
 import Login from './Components/Views/Login/LoginPage';
 import Todo from './Components/Views/Todo/TodoPage';
+import Editar from './Components/Views/Editar/EditarPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/todo" element={<Todo />} />
+        <Route path="/editar" element={<Editar/>}/>
       </Routes>
     </BrowserRouter>
     </Provider>
