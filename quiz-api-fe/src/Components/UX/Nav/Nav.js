@@ -5,6 +5,46 @@ import "./Nav.css";
 const Nav = ()=>{
   const {_id, roles} = useSelector((state)=>state.security);
   const currentLocation = useLocation();
+  if (_id) {
+    return (
+      <nav>
+        <ul>
+          <li>
+            <NavLink
+              to='/agregar'
+              className={currentLocation.pathname === '/agregar' ? 'active' : ''}
+            >
+              Agregar
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to='/editar'
+              className={currentLocation.pathname === '/editar' ? 'active' : ''}
+            >
+              Editar
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to='/contribuciones'
+              className={currentLocation.pathname === '/contribuciones' ? 'active' : ''}
+            >
+              Tus Contribuciones
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to='/solicitud'
+              className={currentLocation.pathname === '/solicitud' ? 'active' : ''}
+            >
+              Solicita Preguntas
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+    );
+  }
   return (
     <nav>
       <ul>

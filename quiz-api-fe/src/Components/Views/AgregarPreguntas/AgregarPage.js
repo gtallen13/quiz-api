@@ -1,13 +1,16 @@
 import Agregar from './Agregar';
 import { useState } from 'react';
 import { publicAxios } from '../../../Lib/apiClient';
-
+import { useSelector } from "react-redux"
 const AgregarPage = ()=>{
+  //trae el usuario logueado uwu
+  const {email} = useSelector((state)=>state.security); 
   const [txtPregunta, setTxtPregunta] = useState('');
   const [cmbRespuesta, setcmbRespuesta] = useState(true);
   const [cmbCategoria, setcmbCategoria] = useState("Deportes");
   const [cmbDificultad, setcmbDificultad] = useState("Facil");
   const onChangeHandler = ({target: {name, value}})=>{
+    console.log(email);
     switch (name) {
       case 'txtPregunta':
         console.log(value);
