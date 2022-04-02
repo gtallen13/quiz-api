@@ -10,7 +10,6 @@ const AgregarPage = ()=>{
   const [cmbCategoria, setcmbCategoria] = useState("Deportes");
   const [cmbDificultad, setcmbDificultad] = useState("Facil");
   const onChangeHandler = ({target: {name, value}})=>{
-    console.log(email);
     switch (name) {
       case 'txtPregunta':
         console.log(value);
@@ -41,7 +40,7 @@ const AgregarPage = ()=>{
           respuesta: cmbRespuesta,
           categoria: cmbCategoria,
           dificultad: cmbDificultad,
-          autor: "xd",
+          autor: email,
           
         }, {headers: {Authorization:'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5yX2xvcGV6ckB1bmljYWguZWR1Iiwicm9sZXMiOlsicHVibGljIl0sIl9pZCI6IjYyNDRkOWY2ZGRmOGU0YzUwNjMzNjNmOSIsImlhdCI6MTY0ODY4MDQxMX0.iRD3BUzm_datD6qsOUQMVaTY_JK4f0YtmRCVGsGc9Ys'}}
       );
