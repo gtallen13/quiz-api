@@ -21,7 +21,6 @@ const RevisionPage = () => {
                         Authorization: `Bearer ${jwtToken}`
                     }
                 });
-                console.log(preguntas);
                 dispatch({type:"PREGUNTAS_SUCCESS", payload:{preguntas}})
             } catch(ex){
                 console.log(ex);
@@ -31,16 +30,38 @@ const RevisionPage = () => {
         loadData();
     },[])
 
-    const marcarRevisado = ()=>{
+    const reviewHandler = async (e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+        const idPregunta = e.target.value;
         try{
-            const 
+            const data = await privateAxios.put(`/api/v1/preguntas/revision/${idPregunta}`,
+            {
+                revision:false
+            },{
+                headers:{
+                    Authorization:`Bearer ${jwtToken}`
+                }
+            })
+            console.log('Update success');
+            console.log(data);
+        } catch(ex){
+            console.log(`Error on update: ${ex}`);
+            console.log(ex);
         }
+        
+    }
+    const editHandler = (e)=>{
     }
     const {preguntas, isLoading, errors} = useSelector(state=>state.preguntas);
     return (
         <>
             {isLoading && (<Loading/>)}
-            <Revision preguntas={preguntas}/>
+            <Revision 
+            preguntas={preguntas} 
+            onEditClick={editHandler}
+            onReviewClick={reviewHandler}
+            />
         </>
     );
 }
