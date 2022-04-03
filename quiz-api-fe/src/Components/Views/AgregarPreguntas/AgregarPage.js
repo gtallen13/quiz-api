@@ -4,7 +4,7 @@ import { publicAxios } from '../../../Lib/apiClient';
 import { useSelector } from "react-redux"
 const AgregarPage = ()=>{
   //trae el usuario logueado uwu
-  const {email} = useSelector((state)=>state.security); 
+  const {email, jwtToken} = useSelector((state)=>state.security); 
   const [txtPregunta, setTxtPregunta] = useState('');
   const [cmbRespuesta, setcmbRespuesta] = useState(true);
   const [cmbCategoria, setcmbCategoria] = useState("Deportes");
@@ -42,7 +42,7 @@ const AgregarPage = ()=>{
           dificultad: cmbDificultad,
           autor: email,
           
-        }, {headers: {Authorization:'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5yX2xvcGV6ckB1bmljYWguZWR1Iiwicm9sZXMiOlsicHVibGljIl0sIl9pZCI6IjYyNDRkOWY2ZGRmOGU0YzUwNjMzNjNmOSIsImlhdCI6MTY0ODY4MDQxMX0.iRD3BUzm_datD6qsOUQMVaTY_JK4f0YtmRCVGsGc9Ys'}}
+        }, {headers: {Authorization:`Bearer ${jwtToken}`}}
       );
       console.log('Pregunta Request: ', data)
     } catch(ex) {
