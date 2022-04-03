@@ -1,8 +1,18 @@
 import Editar from './Editar';
 import { useState } from 'react';
-import { publicAxios } from '../../../Lib/apiClient';
+import {useDispatch, useSelector} from 'react-redux'
+
+import { privatecAxios } from '../../../Lib/apiClient';
 
 const EditarPage = ()=>{
+
+  const{jwtToken} = useSelector((state)=>state.security);
+  const dispatch = useDispatch();
+
+  
+  const [txtPregunta, setTxtPregunta] = useState('');
+  const [cmbTespuesta, setCmbRespuesta] = useState('');
+  const [cmbcategoria, setCmbCategoria] = useState('');
   const [txtPregunta, setTxtPregunta] = useState('');
   const onChangeHandler = ({target: {name, value}})=>{
     switch (name) {
@@ -21,8 +31,12 @@ const EditarPage = ()=>{
 
     
     try{
-      const data = await publicAxios.post(
-        '/api/v1/seguridad/signin',
+      const data = await privateAxios.post(
+        `/api/v1/preguntas/update/${idPregunta}`, 
+        {
+          pregunta: textPregunta,
+          respuesta: txtRespuesta
+        }
         
       );
       console.log('Signin Request: ', data)
