@@ -79,19 +79,14 @@ class Usuarios {
   }
 
   async updatePenalizaciones(id){
-    
     const myDocument = this.collection.updateOne({
       _id: new ObjectId(id)
     },
       {$inc :{
         penalizacion:1
-        
       }}) 
-      
       return myDocument;
     }
-  
-    
 }
 
 //update penalizaciones

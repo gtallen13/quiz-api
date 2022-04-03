@@ -104,6 +104,17 @@ router.get("/getCategories/:categoria/:dificultad", async (req, res) =>{
   }
 })
 
+router.get("/getPreguntas/:email", async (req, res) => {
+  try {
+    const { email } = req.params;
+    const rows = await preguntasModel.getPreguntas(email);
+    res.status(200).json({ status: "success", preguntas: rows});
+  } catch (ex) {
+    console.log(ex);
+    res.status(500).json({ status: "failed"});
+  }
+})
+
 router.get("/byAmount/:cantidad", async (req, res) => {
   const {cantidad} = req.params;
   console.log(cantidad);

@@ -81,6 +81,16 @@ class Preguntas {
     }
     return false;
   }
+
+ async getPreguntas(email){
+   if (email !== ""){
+     const filter = this.collection.find({autor: email});
+     const documents = await filter.toArray();
+     return documents;
+   }
+   return false;
+ }
+
   async getAmount(cantidad){
     const cursor =  this.collection.find({}).limit(cantidad)
     const documents = await cursor.toArray()
