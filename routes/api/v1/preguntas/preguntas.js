@@ -63,7 +63,7 @@ router.get("/byid/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const row = await preguntasModel.getById(id);
-    res.status(200).json({ status: "ok", preguntas: row });
+    res.status(200).json({ status: "ok", pregunta: row });
   } catch (ex) {
     console.log(ex);
     res.status(500).json({ status: "failed" });
