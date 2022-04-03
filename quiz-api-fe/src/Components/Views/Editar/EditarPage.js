@@ -1,10 +1,9 @@
 import Editar from './Editar';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {useParams} from 'react-router-dom'
 
-import { privateAxios, privatecAxios } from '../../../Lib/apiClient';
-import { set } from 'express/lib/response';
+import { privateAxios} from '../../../Lib/apiClient';
 
 const EditarPage = ()=>{
 
@@ -23,8 +22,9 @@ const EditarPage = ()=>{
   useEffect(()=>{
     const loadPregunta = async ()=>{
       try{
-        const {data: {preguntas,status}}=await privateAxios.het(`/byid${idPregunta}`)
+        const {data: {pregunta,status}} = await privateAxios.het(`/byid${idPregunta}`)
        // setIsLoadingPregunta(false)
+       console.log(pregunta);
       }
        catch(e){
          console.log(e);
@@ -60,7 +60,7 @@ const EditarPage = ()=>{
     if (txtPregunta){
         console.log("No esta vacio ");
     try{
-      const data = await privateAxios.post(
+      const data = await privateAxios.put(
         `/api/v1/preguntas/update/${idPregunta}`, 
         {
           pregunta: txtPregunta,

@@ -28,7 +28,7 @@ function App() {
             <Route path="/Resultados" element={<Private><ResultadosPage /></Private>} />
             <Route path="/contribuciones" element={<Private><Contribuciones /></Private>} />
             <Route path='/agregar' element={<Private>< Agregar /></Private>} />
-            <Route path="/editar" element={<Private><Editar/></Private>}/>
+            <Route path="/editar/:idPregunta" element={<Private><Editar/></Private>}/>
             <Route path="/revision" element={<Private><Revision/></Private>}/>
             <Route path="/solicitud" element={<Private><Solicitud/></Private>}/>
           </Routes>

@@ -1,6 +1,7 @@
 import Page from "../../UX/Page/Page";
 import { PrimaryButton, SecondaryButton} from "../../UX/Forms/Button";
 import Nav from "../../UX/Nav/Nav";
+import { Link } from "react-router-dom";
 import './Revision.css'
 const Revision = ({preguntas, onEditClick,onReviewClick})=> {
   return (
@@ -13,7 +14,9 @@ const Revision = ({preguntas, onEditClick,onReviewClick})=> {
               <p>{item.respuesta? "Verdadero":"Falso"}</p>
             </div>
             <div className="top-right">
-              <PrimaryButton onClick={onEditClick} value={item._id}>Editar</PrimaryButton>
+              <Link to={`/editar/${item._id}`}>
+                <PrimaryButton onClick={onEditClick} value={item._id}>Editar</PrimaryButton>
+              </Link>
               <SecondaryButton onClick={onReviewClick} value={item._id}>Marca como Revisado</SecondaryButton>
             </div>
         </section>
