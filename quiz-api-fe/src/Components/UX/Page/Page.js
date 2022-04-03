@@ -25,8 +25,13 @@ const Page = ({header: headerComponent, footer: footerComponent, children})=>{
       {
       hasHeader &&
       <header className="page_header">
-        {headerComponent}
-        <button onClick={clickLogout}>Logout</button>
+        {headerComponent} 
+        { email && 
+        <div>
+          <span>{email}</span>
+          <button onClick={clickLogout}>Logout</button>
+        </div>
+        }
       </header>
       }
       <main>
