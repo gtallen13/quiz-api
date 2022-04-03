@@ -44,7 +44,7 @@ const SignIn = ({
             error={errorPassword}
             onChange={onChangeHandler}
           />
-          <div className="button-container">
+          <div className="button-container column">
             <PrimaryButton onClick={onConfirmClick}>
               Crear Cuenta
             </PrimaryButton>

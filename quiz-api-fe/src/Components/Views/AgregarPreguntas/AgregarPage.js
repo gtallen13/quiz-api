@@ -1,25 +1,19 @@
-import Editar from './Editar';
+import Agregar from './Agregar';
 import { useState } from 'react';
-import {useDispatch, useSelector} from 'react-redux'
-
-import { privatecAxios } from '../../../Lib/apiClient';
-
-const EditarPage = ()=>{
-
-  const{jwtToken} = useSelector((state)=>state.security);
-  const dispatch = useDispatch();
-
-  
-  const [txtPregunta, setTxtPregunta] = useState('');
-  const [cmbTespuesta, setCmbRespuesta] = useState('');
-  const [cmbcategoria, setCmbCategoria] = useState('');
+import { publicAxios } from '../../../Lib/apiClient';
+import { useSelector } from "react-redux"
+const AgregarPage = ()=>{
+  //trae el usuario logueado uwu
+  const {email} = useSelector((state)=>state.security); 
   const [txtPregunta, setTxtPregunta] = useState('');
   const [cmbRespuesta, setcmbRespuesta] = useState(true);
   const [cmbCategoria, setcmbCategoria] = useState("Deportes");
   const [cmbDificultad, setcmbDificultad] = useState("Facil");
   const onChangeHandler = ({target: {name, value}})=>{
+    console.log(email);
     switch (name) {
       case 'txtPregunta':
+        console.log(value);
         setTxtPregunta(value);
         break;
       case 'cmbRespuesta':
@@ -29,7 +23,7 @@ const EditarPage = ()=>{
       case 'cmbCategoria':
         setcmbCategoria(value);
         break;
-        case 'cmbDificultad':
+       case 'cmbDificultad':
         setcmbDificultad(value);
         break;
       default:
@@ -39,30 +33,27 @@ const EditarPage = ()=>{
   const onConfirm = async (e)=>{
     e.preventDefault();
     e.stopPropagation();
-    if (txtPregunta){
-        console.log("No esta vacio ");
     try{
-      const data = await privateAxios.post(
-        `/api/v1/preguntas/update/${idPregunta}`, 
+      const data = await publicAxios.post(
+        '/api/v1/preguntas/new',
         {
-          pregunta: textPregunta,
-          respuesta: txtRespuesta
-        }
-        
+          pregunta: txtPregunta,
+          respuesta: cmbRespuesta,
+          categoria: cmbCategoria,
+          dificultad: cmbDificultad,
+          autor: "xd",
+          
+        }, {headers: {Authorization:'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5yX2xvcGV6ckB1bmljYWguZWR1Iiwicm9sZXMiOlsicHVibGljIl0sIl9pZCI6IjYyNDRkOWY2ZGRmOGU0YzUwNjMzNjNmOSIsImlhdCI6MTY0ODY4MDQxMX0.iRD3BUzm_datD6qsOUQMVaTY_JK4f0YtmRCVGsGc9Ys'}}
       );
-      console.log('Signin Request: ', data)
+      console.log('Pregunta Request: ', data)
     } catch(ex) {
-      console.log('Error on Sigin submit', ex);
-    }
-    }
-    else {
-        console.log("Vacios");
+      console.log('Error on Pregunta submit', ex);
     }
   }
- 
-  const onCancel = (e)=>{
+  const onClear = (e)=>{
     e.preventDefault();
     e.stopPropagation();
+    
 
   }
   // const onChangeHandler = (e) => {
@@ -70,7 +61,7 @@ const EditarPage = ()=>{
   // }
   return (
     <>
-      <Editar
+      <Agregar
         txtPreguntaValue={txtPregunta}
         cmbRespuestaValue={cmbRespuesta}
         cmbCategoriaValue={cmbCategoria}
@@ -78,10 +69,10 @@ const EditarPage = ()=>{
         onChange={onChangeHandler}
         errorTxtPregunta=''
         onConfirmClick={onConfirm}
-        onCancelClick={onCancel}
+        onClearClick={onClear}
       />
     </>
   )
 }
 
-export default EditarPage;
+export default AgregarPage;

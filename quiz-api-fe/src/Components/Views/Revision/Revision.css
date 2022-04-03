@@ -1,0 +1,19 @@
+.info-container{
+    position: relative;
+    width: 70%;
+}
+.info-wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px;
+    border: 1px solid #000;
+    margin: 10px;
+}
+.top-right{
+    position: absolute;
+    top: 0;
+    right: 0;
+  }

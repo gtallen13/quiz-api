@@ -1,9 +1,10 @@
 import Page from "../../UX/Page/Page";
 import Input from "../../UX/Forms/Input";
 import { PrimaryButton, SecondaryButton} from "../../UX/Forms/Button";
-import ComboBox from "../../UX/Forms/ComboBox";
 import Nav from "../../UX/Nav/Nav";
-const Editar = ({
+import ComboBox from "../../UX/Forms/ComboBox";
+
+const Agregar = ({
   txtPreguntaValue,
   cmbRespuestaValue,
   cmbCategoriaValue,
@@ -11,8 +12,9 @@ const Editar = ({
   onChange: onChangeHandler,
   errorTxtPregunta,
   onConfirmClick,
-  onCancelClick
+  onClearClick
 })=> {
+
   const respuestas = ["Verdadero","Falso"]
   const categorias= [
     "Deportes",
@@ -29,17 +31,18 @@ const Editar = ({
     "Dificil"
   ]
   return (
-    <Page header={(<h2>&nbsp;Editar Preguta</h2>)} footer={<Nav />}>
+    <Page header={(<h2>&nbsp;Crear Cuenta</h2>)} footer={<Nav />}>
       <div className="center-page">
         <section className="form-wrapper">
         <Input
-            label=" Ingrese Pregunta"
+            label="Pregunta"
             type="text"
             name="txtPregunta"
-            placeholder="Su Pregunta"
+            placeholder="Escriba la pregutna"
             value={txtPreguntaValue}
             error={errorTxtPregunta}
             onChange={onChangeHandler}
+            
           />
           <ComboBox 
           label="Respuesta" 
@@ -63,17 +66,13 @@ const Editar = ({
           onChange={onChangeHandler}
           />
           <div className="button-container">
-            <PrimaryButton onClick={onConfirmClick}>
-              Agregar
-            </PrimaryButton>
-            <SecondaryButton>Limpiar</SecondaryButton>
-            
+            <PrimaryButton onClick={onConfirmClick}>Agregar Pregunta</PrimaryButton>
+            <SecondaryButton onClick={onClearClick}>Limpiar</SecondaryButton>
           </div>
         </section>
-
       </div>
     </Page>
   );
 }
 
-export default Editar;
+export default Agregar;
