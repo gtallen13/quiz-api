@@ -41,9 +41,8 @@ const AgregarPage = ()=>{
           respuesta: cmbRespuesta,
           categoria: cmbCategoria,
           dificultad: cmbDificultad,
-          autor: "xd",
-          
-        }, {headers: {Authorization:'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5yX2xvcGV6ckB1bmljYWguZWR1Iiwicm9sZXMiOlsicHVibGljIl0sIl9pZCI6IjYyNDRkOWY2ZGRmOGU0YzUwNjMzNjNmOSIsImlhdCI6MTY0ODY4MDQxMX0.iRD3BUzm_datD6qsOUQMVaTY_JK4f0YtmRCVGsGc9Ys'}}
+          autor: email, 
+        }
       );
       console.log('Pregunta Request: ', data)
     } catch(ex) {

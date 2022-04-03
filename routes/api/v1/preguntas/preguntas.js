@@ -134,5 +134,20 @@ router.put('/revision/:id', async (req, res) => {
     });
   }
 })
+router.get('/getPreguntasRevision', async (req, res) => {
+  try{
+    const preguntas = await preguntasModel.getPreguntasRevision();
+    res.status(200).json({
+      status: 'ok',
+      preguntas
+    })
+  }catch (ex){
+    console.log(ex);
+    res.status(500).json({
+      status: "failed",
+      result: {},
+    });
+  }
+})
 
 module.exports = router;
