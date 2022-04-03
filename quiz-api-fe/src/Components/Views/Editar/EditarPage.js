@@ -1,22 +1,39 @@
 import Editar from './Editar';
 import { useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
+import {useParams} from 'react-router-dom'
 
-import { privatecAxios } from '../../../Lib/apiClient';
+import { privateAxios, privatecAxios } from '../../../Lib/apiClient';
+import { set } from 'express/lib/response';
 
 const EditarPage = ()=>{
 
   const{jwtToken} = useSelector((state)=>state.security);
+  const {idPregunta} =useParams();
   const dispatch = useDispatch();
 
   
   const [txtPregunta, setTxtPregunta] = useState('');
-  const [cmbTespuesta, setCmbRespuesta] = useState('');
-  const [cmbcategoria, setCmbCategoria] = useState('');
-  const [txtPregunta, setTxtPregunta] = useState('');
   const [cmbRespuesta, setcmbRespuesta] = useState(true);
   const [cmbCategoria, setcmbCategoria] = useState("Deportes");
   const [cmbDificultad, setcmbDificultad] = useState("Facil");
+  //const[isLoadingPregunta, setIsLoadingPregunta] = useState(true);
+  const [currentPregunta, setCurrentPregunta] = useState({})
+
+  useEffect(()=>{
+    const loadPregunta = async ()=>{
+      try{
+        const {data: {preguntas,status}}=await privateAxios.het(`/byid${idPregunta}`)
+       // setIsLoadingPregunta(false)
+      }
+       catch(e){
+         console.log(e);
+       }
+    }
+    loadPregunta();
+    console.log(currentPregunta);
+  });
+
   const onChangeHandler = ({target: {name, value}})=>{
     switch (name) {
       case 'txtPregunta':
@@ -36,6 +53,7 @@ const EditarPage = ()=>{
         break;
     }
   }
+
   const onConfirm = async (e)=>{
     e.preventDefault();
     e.stopPropagation();
@@ -45,14 +63,22 @@ const EditarPage = ()=>{
       const data = await privateAxios.post(
         `/api/v1/preguntas/update/${idPregunta}`, 
         {
-          pregunta: textPregunta,
-          respuesta: txtRespuesta
+          pregunta: txtPregunta,
+          respuesta: cmbRespuesta,
+          categoria: cmbCategoria,
+          dificultad: cmbDificultad
+        },{
+          headers:{
+            Authorization: `Bearer ${jwtToken}`
+          }
         }
         
       );
-      console.log('Signin Request: ', data)
+
+
+      console.log('Pregunta Request: ', data)
     } catch(ex) {
-      console.log('Error on Sigin submit', ex);
+      console.log('Error on pregunta update', ex);
     }
     }
     else {
