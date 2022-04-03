@@ -110,7 +110,7 @@ router.get("/byAmount/:cantidad", async (req, res) => {
   const intCantidad = parseInt(cantidad)
   try{
       const rows = await preguntasModel.getAmount(intCantidad);
-      res.status(200).json({status: "ok", result: rows})
+      res.status(200).json({status: "ok", preguntas: rows})
     }catch(error){
       console.log(error)
       res.status(500).json({status:"failed"})
