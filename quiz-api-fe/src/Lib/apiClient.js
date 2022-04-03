@@ -3,8 +3,8 @@ import axios from 'axios';
 export const publicAxios = axios.create();
 export const privateAxios = axios.create();
 
-publicAxios.defaults.headers.common['apitoken'] = process.env.REACT_APP_APITOKEN;
-privateAxios.defaults.headers.common['apitoken'] = process.env.REACT_APP_APITOKEN;
+publicAxios.defaults.headers.common['apiToken'] = process.env.REACT_APP_APITOKEN;
+privateAxios.defaults.headers.common['apiToken'] = process.env.REACT_APP_APITOKEN;
 
 publicAxios.defaults.baseURL = process.env.REACT_APP_APIURL;
 privateAxios.defaults.baseURL = process.env.REACT_APP_APIURL;

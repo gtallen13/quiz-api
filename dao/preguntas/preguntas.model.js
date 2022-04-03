@@ -105,6 +105,12 @@ class Preguntas {
     };
     return await this.collection.updateOne(filter, updateCmd);
   }
+  async getPreguntasRevision(){
+    const filter = {revision:true};
+    const cursor = this.collection.find(filter); 
+    const documents = await cursor.toArray()
+    return documents;
+  }
 }
 
 module.exports = Preguntas;

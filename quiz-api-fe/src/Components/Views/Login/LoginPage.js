@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { publicAxios } from '../../../Lib/apiClient';
 import Loading from '../../UX/Loading/Loading';
+import { useNavigate } from 'react-router-dom';
 const LoginPage = () => {
+  const routeNavigator = useNavigate()
   const { isLoading, errors } = useSelector((state)=>{return state.security});
   const dispatch = useDispatch();
   const [txtCorreo, setTxtCorreo] = useState('');
@@ -34,7 +36,7 @@ const LoginPage = () => {
       const {jwt:jwtToken, user} = data.data;
 
       dispatch({ type:'ON_LOGIN_SUCCESS', payload:{jwtToken, ...user}});
-      //
+      routeNavigator('/contribuciones')
     } catch (ex) {
       dispatch({ type:'ON_LOGIN_ERROR', payload:{errors:['¡Credenciales Incorrectas!']}});
       console.log('Error on Sigin submit', ex);
