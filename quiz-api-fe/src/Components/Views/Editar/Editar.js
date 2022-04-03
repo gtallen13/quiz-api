@@ -64,7 +64,7 @@ const Editar = ({
           />
           <div className="button-container">
             <PrimaryButton onClick={onConfirmClick}>
-              Agregar
+              Editar
             </PrimaryButton>
             <SecondaryButton>Limpiar</SecondaryButton>
             

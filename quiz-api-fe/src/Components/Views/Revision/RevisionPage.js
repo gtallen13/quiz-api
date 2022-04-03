@@ -1,11 +1,12 @@
 import Revision from "./Revision";
 import { useDispatch,useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {privateAxios} from '../../../Lib/apiClient'
 import Loading from '../../UX/Loading/Loading'
 const RevisionPage = () => {
 
     const {jwtToken} = useSelector((state)=>state.security)
+    const [isRevisado, setIsRevisado] = useState(false)
     // console.log(`jwt: ${jwtToken}`);
     const dispatch = useDispatch();
     useEffect(()=>{
@@ -45,6 +46,7 @@ const RevisionPage = () => {
             })
             console.log('Update success');
             console.log(data);
+            setIsRevisado("Marcado como revisado")
         } catch(ex){
             console.log(`Error on update: ${ex}`);
             console.log(ex);
@@ -61,6 +63,7 @@ const RevisionPage = () => {
             preguntas={preguntas} 
             onEditClick={editHandler}
             onReviewClick={reviewHandler}
+            msgRevisado={isRevisado}
             />
         </>
     );

@@ -1,5 +1,6 @@
 const defaultPreguntas = {
     preguntas: [],
+    currentPregunta:{},
     isLoading: false,
     errors: [],
     totalPages:0,
