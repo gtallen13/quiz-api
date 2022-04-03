@@ -1,6 +1,6 @@
 import Agregar from "./Agregar";
 import { useState } from "react";
-import { publicAxios } from "../../../Lib/apiClient";
+import { privateAxios } from "../../../Lib/apiClient";
 import { useSelector } from "react-redux";
 const AgregarPage = () => {
   //trae el usuario logueado uwu
@@ -33,7 +33,7 @@ const AgregarPage = () => {
     e.preventDefault();
     e.stopPropagation();
     try {
-      const data = await publicAxios.post(
+      const {data:{result,status}} = await privateAxios.post(
         "/api/v1/preguntas/new",
         {
           pregunta: txtPregunta,
@@ -44,7 +44,7 @@ const AgregarPage = () => {
         },
         { headers: { Authorization: `Bearer ${jwtToken}` } }
       );
-      console.log("Pregunta Request: ", data);
+      console.log("Pregunta Request: ", result);
     } catch (ex) {
       console.log("Error on Pregunta submit", ex);
     }
@@ -53,9 +53,6 @@ const AgregarPage = () => {
     e.preventDefault();
     e.stopPropagation();
   };
-  // const onChangeHandler = (e) => {
-  //   const {name, value} = e.target;
-  // }
   return (
     <>
       <Agregar
