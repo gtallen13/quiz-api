@@ -24,6 +24,8 @@ export const securityReducer = (state = defaultSecurity, action) => {
       return {...state, ...payload, isLoading:false, errors:[]};
     case 'ON_LOGIN_ERROR':
       return {...state, errors: payload.errors, isLoading:false};
+    case 'USER_LOGOUT':
+      return {...state, email:'', jwtToken:'', roles:[], _id:'', errors:[], isLoading:false};
     default:
       return state;
   }
