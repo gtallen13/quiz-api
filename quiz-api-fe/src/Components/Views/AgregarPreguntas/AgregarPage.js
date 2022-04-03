@@ -55,6 +55,7 @@ const AgregarPage = ()=>{
     
 
   }
+  
   // const onChangeHandler = (e) => {
   //   const {name, value} = e.target;
   // }

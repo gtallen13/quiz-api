@@ -30,6 +30,12 @@ const RevisionPage = () => {
         }
         loadData();
     },[])
+
+    const marcarRevisado = ()=>{
+        try{
+            const 
+        }
+    }
     const {preguntas, isLoading, errors} = useSelector(state=>state.preguntas);
     return (
         <>
