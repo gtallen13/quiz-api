@@ -12,7 +12,8 @@ const Revision = ({preguntas, onEditClick,onReviewClick, msgRevisado})=> {
             <div className="info-container">
               <p>{item.pregunta}</p>
               <p>{item.respuesta? "Verdadero":"Falso"}</p>
-              <p className="msg-revisado">{msgRevisado}</p>
+              {msgRevisado.id === item._id ? <p className="msg-revisado">{msgRevisado.msg}</p>:null}
+              
             </div>
             <div className="top-right">
               <Link to={`/editar/${item._id}`}>

@@ -6,7 +6,7 @@ import Loading from '../../UX/Loading/Loading'
 const RevisionPage = () => {
 
     const {jwtToken} = useSelector((state)=>state.security)
-    const [isRevisado, setIsRevisado] = useState(false)
+    const [isRevisado, setIsRevisado] = useState({})
     // console.log(`jwt: ${jwtToken}`);
     const dispatch = useDispatch();
     useEffect(()=>{
@@ -46,7 +46,7 @@ const RevisionPage = () => {
             })
             console.log('Update success');
             console.log(data);
-            setIsRevisado("Marcado como revisado")
+            setIsRevisado({msg:"Marcado como revisado", id:idPregunta})
         } catch(ex){
             console.log(`Error on update: ${ex}`);
             console.log(ex);
