@@ -47,8 +47,7 @@ const EditarPage = ()=>{
         setTxtPregunta(value);
         break;
       case 'cmbRespuesta':
-        if (value==="Verdadero") setcmbRespuesta(true);
-        if (value==="Falso") setcmbRespuesta(false);
+        setcmbRespuesta(value==="Verdadero"?"Verdadero":"Falso");
         break;
       case 'cmbCategoria':
         setcmbCategoria(value);
@@ -67,11 +66,12 @@ const EditarPage = ()=>{
     if (txtPregunta){
         console.log("No esta vacio ");
     try{
+      const strRespuesta = cmbRespuesta === "Verdadero"? true : false;
       const data = await privateAxios.put(
-        `/api/v1/preguntas/update/${idPregunta}`, 
+        `/api/v1/preguntas/update/${idPregunta}`,
         {
           pregunta: txtPregunta,
-          respuesta: cmbRespuesta,
+          respuesta: strRespuesta,
           categoria: cmbCategoria,
           dificultad: cmbDificultad
         },{
