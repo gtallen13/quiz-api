@@ -29,7 +29,7 @@ const Page = ({header: headerComponent, footer: footerComponent, children})=>{
         { email && 
         <div>
           <span>{email}</span>
-          <button onClick={clickLogout}>Logout</button>
+          <button onClick={clickLogout}><img src='https://cdn-icons-png.flaticon.com/512/1828/1828407.png' height ="30" width="30"></img></button>
         </div>
         }
       </header>
