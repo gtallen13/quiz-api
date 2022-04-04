@@ -2,6 +2,7 @@ import Page from "../../UX/Page/Page";
 import { PrimaryButton } from "../../UX/Forms/Button";
 import Nav from "../../UX/Nav/Nav";
 import "./Contribuciones.css";
+import { Link } from 'react-router-dom'
 
 const Contribuciones = ({ preguntas, onConfirmClick }) => {
   return (
@@ -11,9 +12,11 @@ const Contribuciones = ({ preguntas, onConfirmClick }) => {
             <div className="content-contribuciones" key={key}>
             <p>{item.pregunta}</p>
             <p>{item.respuesta?'verdadero':'falso'}</p>
-            <PrimaryButton className={["btnContribuciones"]} onClick={onConfirmClick}>
+            <Link to = {`/editar/${item._id}`}>
+              <PrimaryButton className={["btnContribuciones"]}>
               Editar
-            </PrimaryButton>
+              </PrimaryButton>
+            </Link>
           </div>
           )
       })}

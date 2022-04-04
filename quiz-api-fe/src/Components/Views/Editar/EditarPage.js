@@ -81,7 +81,7 @@ const EditarPage = ()=>{
         }
         
       );
-      routeChanger('/revision')
+      routeChanger(-1)
       console.log('Pregunta Request: ', data)
     } catch(ex) {
       console.log('Error on pregunta update', ex);
