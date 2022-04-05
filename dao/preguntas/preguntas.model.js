@@ -73,9 +73,9 @@ class Preguntas {
     }
     return await this.collection.updateOne(filter, updateCmd)
   }
-  async getCategories(categoria, dificultad ){
-    if (categoria !==  "" && dificultad !== ""){
-      const  filter = this.collection.find({categoria: categoria, dificultad: dificultad});
+  async getCategories(categoria, dificultad, cantidad ){
+    if (categoria !==  "" && dificultad !== "" && cantidad != ""){
+      const  filter = this.collection.find({categoria: categoria, dificultad: dificultad}).limit(cantidad);
     const documents = await filter.toArray();
     return documents;
     }

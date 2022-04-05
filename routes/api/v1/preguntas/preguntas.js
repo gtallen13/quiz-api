@@ -93,10 +93,11 @@ router.put("/update/:id", async(req, res)=>{
   }
 })
 
-router.get("/getCategories/:categoria/:dificultad", async (req, res) =>{
+// Solicitud Preguntas
+router.get("/getCategories/:categoria/:dificultad/:cantidad", async (req, res) =>{
   try{
-    const { categoria, dificultad } = req.params;
-    const rows = await preguntasModel.getCategories(categoria, dificultad);
+    const { categoria, dificultad, cantidad } = req.params;
+    const rows = await preguntasModel.getCategories(categoria, dificultad, parseInt(cantidad));
     res.status(200).json({status: "success", preguntas: rows});
   } catch (ex) {
     console.log(ex);

@@ -8,12 +8,12 @@ import Splash from './Components/Views/Splash';
 import Signin from './Components/Views/Signin/SigninPage';
 import Login from './Components/Views/Login/LoginPage';
 import Todo from './Components/Views/Todo/TodoPage';
-import ResultadosPage from './Components/Views/Resultados/ResultadosPage';
 import Contribuciones from './Components/Views/Contribuciones/ContribucionesPage';
 import Agregar from './Components/Views/AgregarPreguntas/AgregarPage';
 import Solicitud from './Components/Views/Solicitud/SolicitudPage'
 import Editar from './Components/Views/Editar/EditarPage';
 import Revision from './Components/Views/Revision/RevisionPage';
+import Resultados from './Components/Views/Resultados/ResultadosPage';
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signin" element={<Signin />} />
             <Route path="/todo" element={<Todo />} />
-            <Route path="/Resultados" element={<Private><ResultadosPage /></Private>} />
+            <Route path="/Resultados/:categoria/:dificultad/:cantidad" element={<Private><Resultados/></Private>}/>
             <Route path="/contribuciones" element={<Private><Contribuciones /></Private>} />
             <Route path='/agregar' element={<Private>< Agregar /></Private>} />
             <Route path="/editar/:idPregunta" element={<Private><Editar/></Private>}/>
