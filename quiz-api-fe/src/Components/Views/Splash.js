@@ -1,4 +1,7 @@
 import Page from '../UX/Page/Page';
+import {useNavigate} from 'react-router-dom'
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux'; 
 const splashStyle = {
   backgroundColor:'#000',
   color:'#fff',
@@ -10,6 +13,18 @@ const splashStyle = {
   minHeight:'100vh'
 }
 const Splash = ()=>{
+  const {email} = useSelector((state)=>state.security)
+  const routeChanger = useNavigate();
+  useEffect(()=>{
+    setTimeout(()=>{
+      if (email){
+        routeChanger('/contribuciones')
+      }
+      else{
+        routeChanger('/Login')
+      }
+    },2000)
+  },[])
   return(
     <Page>
       <section style={splashStyle}>
