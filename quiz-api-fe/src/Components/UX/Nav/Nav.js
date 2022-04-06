@@ -19,14 +19,6 @@ const Nav = ()=>{
           </li>
           <li>
             <NavLink
-              to='/editar'
-              className={currentLocation.pathname === '/editar' ? 'active' : ''}
-            >
-              Editar
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
               to='/contribuciones'
               className={currentLocation.pathname === '/contribuciones' ? 'active' : ''}
             >

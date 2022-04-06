@@ -10,25 +10,6 @@ const SolicitudPage = () => {
   const [cmbCategoria, setcmbCategoria] = useState("Deportes");
   const [cmbDificultad, setcmbDificultad] = useState("Facil");
 
-  /*useEffect(() => {
-    const loadData = async () => {
-      dispatch({ type: "PREGUNTAS_LOADING", payload: {} });
-      try {
-        const {
-          data: { preguntas, status }
-        } = await privateAxios.get(`/api/v1/preguntas/getCategories/${cmbCategoria}/${cmbDificultad}/${txtCantidad}`, {
-          headers: {
-            Authorization: `Bearer ${jwtToken}`
-          }
-        });
-        dispatch({ type: "PREGUNTAS_SUCCESS", payload: { preguntas } });
-      } catch (ex) {
-        console.log(ex);
-        dispatch({ type: "PACIENTES_FAILED", payload: {} });
-      }
-    };
-    loadData();
-  }, []);*/
   const onClear = (e) =>{
     e.preventDefault()
     e.stopPropagation()
